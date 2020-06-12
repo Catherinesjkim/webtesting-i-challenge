@@ -1,5 +1,8 @@
 const { repair, succeed, fail } = require('./enhancer.js');
 // test away!
+// Items have a name, durability and enhancement
+// The item's enhancement is a number from 0 to 20
+// The item's durabiltiy is a number from 0 to 100
 
 // Everything related to repair()...
 // passes = completed && Fail = Completed
@@ -29,6 +32,8 @@ describe("enhancer.js", () => {
 // Everything related to success()...
 // You are able to check all conditions for succeed() function
 // passes = completed && Fail = Completed
+// the item's enhancement increase by 1
+// the durability of the item is not changed
 describe("enhancer.js", () => {
   describe("success()", () => {
     it("should make enhancement current + 1", () => {
@@ -52,6 +57,8 @@ describe("enhancer.js", () => {
 })
 
 // passes = completed && Fail = Completed
+// if the item enhancement level is 20, the enhancement level is not changed
+// the durability of the item is not changed
 describe("enhancer.js", () => {
   describe("success()", () => {
     it("should make enhancement state = unchanged", () => {
@@ -75,7 +82,8 @@ describe("enhancer.js", () => {
 })
 
 // Everything related to fail()...
-// passes = completed && Fail = Completed
+// passes = completed && Fail = Completed\
+// If the item's enhancement is less than 15, the durability of the item is decreased by 5.
 describe("enhancer.js", () => {
   describe("fail()", () => {
     it("if enhancement of (item) < 15 = durability - 5", () => {
@@ -97,6 +105,7 @@ describe("enhancer.js", () => {
 })
 
 // passes = completed && Fail = Completed
+// If the item's enhancement is 15 or more, the durability of the item is decreased by 10.
 describe("enhancer.js", () => {
   describe("fail()", () => {
     it("if enhancement of (item) >= 15 = durability - 10", () => {
@@ -117,6 +126,7 @@ describe("enhancer.js", () => {
   })
 })
 
+// If the item's enhancement level is greater than 16, the enhancement level decreases by 1 (17 goes down to 16, 18 goes down to 17).
 describe("enhancer.js", () => {
   describe("fail()", () => {
     it("if enhancement of (item) > 16 = enhancement -1", () => {
